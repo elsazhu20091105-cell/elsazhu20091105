@@ -3,343 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elsa Zhu | Personal Profile</title>
+<title>Elsa Zhu | Personal Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
 
 :root{
-    --lavender:#CDB4DB;
-    --pink:#FFC8DD;
-    --rose:#FFAFCC;
-    --blue:#BDE0FE;
-    --sky:#A2D2FF;
-    --text:#2b2b2b;
-    --white:#ffffff;
+--pink1:#FFC8DD;
+--pink2:#FFAFCC;
+--purple:#CDB4DB;
+--blue1:#BDE0FE;
+--blue2:#A2D2FF;
+--white:#FFFFFF;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family: "Segoe UI",Arial,sans-serif;
-    background:linear-gradient(135deg,#fff,#faf8ff);
-    color:var(--text);
-    line-height:1.7;
+
+font-family:Poppins,sans-serif;
+overflow-x:hidden;
+background:
+radial-gradient(circle at top left,#FFC8DD 0%,transparent 45%),
+radial-gradient(circle at bottom right,#BDE0FE 0%,transparent 45%),
+linear-gradient(135deg,#ffffff,#FFEFF7,#ffffff);
+
+color:#555;
+}
+
+/* ---------- Decorative Background ---------- */
+
+.blob{
+position:fixed;
+border-radius:50%;
+filter:blur(45px);
+opacity:.45;
+z-index:-5;
+animation:float 18s ease-in-out infinite alternate;
+}
+
+.b1{
+width:380px;
+height:380px;
+background:#FFAFCC;
+left:-120px;
+top:-90px;
+}
+
+.b2{
+width:430px;
+height:430px;
+background:#BDE0FE;
+right:-120px;
+top:120px;
+animation-delay:5s;
+}
+
+.b3{
+width:350px;
+height:350px;
+background:#CDB4DB;
+left:30%;
+bottom:-120px;
+animation-delay:2s;
+}
+
+@keyframes float{
+from{transform:translateY(0px) rotate(0);}
+to{transform:translateY(-50px) rotate(15deg);}
+}
+
+/* circles */
+
+.circle{
+position:fixed;
+border-radius:50%;
+border:2px solid rgba(255,255,255,.4);
+animation:rise linear infinite;
+z-index:-2;
+}
+
+@keyframes rise{
+0%{
+transform:translateY(120vh) scale(.2);
+opacity:0;
+}
+30%{opacity:.6;}
+100%{
+transform:translateY(-20vh) scale(1);
+opacity:0;
+}
+}
+
+/* stars */
+
+.star{
+position:fixed;
+font-size:18px;
+color:white;
+text-shadow:0 0 10px white;
+animation:twinkle 3s infinite;
+z-index:-2;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.2;
+transform:scale(.5);
+}
+}
+
+/* butterflies */
+
+.butterfly{
+position:fixed;
+font-size:24px;
+opacity:.55;
+animation:fly 16s linear infinite;
+z-index:-2;
+}
+
+@keyframes fly{
+0%{transform:translate(-10vw,110vh) rotate(0);}
+100%{transform:translate(110vw,-20vh) rotate(360deg);}
 }
 
 header{
-    background:linear-gradient(135deg,var(--lavender),var(--sky));
-    color:white;
-    text-align:center;
-    padding:90px 20px;
-    position:relative;
-    overflow:hidden;
+
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:60px 10%;
+position:relative;
+
 }
 
-header::before{
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    background:rgba(255,255,255,.15);
-    border-radius:50%;
-    top:-120px;
-    left:-100px;
+.hero{
+
+display:grid;
+grid-template-columns:350px 1fr;
+gap:60px;
+align-items:center;
+width:100%;
+max-width:1400px;
+
 }
 
-header::after{
-    content:"";
-    position:absolute;
-    width:280px;
-    height:280px;
-    background:rgba(255,255,255,.12);
-    border-radius:50%;
-    bottom:-120px;
-    right:-80px;
+.photo{
+
+width:320px;
+height:420px;
+border-radius:40px;
+overflow:hidden;
+background:linear-gradient(145deg,#ffffff,#FFEAF3);
+border:2px solid rgba(255,255,255,.8);
+box-shadow:
+0 25px 70px rgba(255,175,204,.4),
+0 0 0 8px rgba(255,255,255,.25);
+
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.profile-circle{
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    background:white;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:48px;
-    color:var(--lavender);
-    font-weight:bold;
-    box-shadow:0 12px 35px rgba(0,0,0,.15);
-    margin-bottom:25px;
-    position:relative;
-    z-index:1;
+.photo img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
 }
 
-h1{
-    font-size:3rem;
-    position:relative;
-    z-index:1;
+.photo::before{
+
+content:"photo.jpg";
+position:absolute;
+font-family:Playfair Display;
+color:#CDB4DB;
+font-size:24px;
+
 }
 
-.subtitle{
-    margin-top:10px;
-    font-size:1.25rem;
-    opacity:.95;
-    position:relative;
-    z-index:1;
+.photo img[src]{
+position:relative;
+z-index:2;
 }
 
-.container{
-    width:min(1150px,92%);
-    margin:auto;
+.heroText h1{
+
+font-size:76px;
+font-family:"Great Vibes";
+color:#ff8fb8;
+margin-bottom:10px;
+text-shadow:0 8px 30px rgba(255,175,204,.4);
+
+}
+
+.heroText h2{
+
+font-size:32px;
+font-family:Playfair Display;
+background:linear-gradient(90deg,#ff9fc6,#A2D2FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:30px;
+
+}
+
+.heroText p{
+
+font-size:18px;
+line-height:2;
+max-width:760px;
+
+}
+
+.section{
+
+max-width:1300px;
+margin:auto;
+padding:90px 8%;
+
+}
+
+.title{
+
+font-size:54px;
+font-family:Playfair Display;
+margin-bottom:40px;
+background:linear-gradient(90deg,#FFAFCC,#A2D2FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-    margin-top:-50px;
-    padding-bottom:60px;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+gap:30px;
+
 }
 
 .card{
-    background:white;
-    border-radius:22px;
-    padding:32px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.3s;
+
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,.6);
+box-shadow:
+0 20px 50px rgba(255,175,204,.18),
+0 0 25px rgba(162,210,255,.15);
+transition:.35s;
+
+position:relative;
+overflow:hidden;
+
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+transform:translateY(-8px) scale(1.02);
+
 }
 
-.card h2{
-    margin-bottom:18px;
-    color:#6f4c93;
+.card:before{
+
+content:"";
+position:absolute;
+width:160px;
+height:160px;
+border-radius:50%;
+background:linear-gradient(#FFC8DD,#BDE0FE);
+right:-60px;
+top:-60px;
+opacity:.18;
+
 }
 
-.about{
-    grid-column:1/-1;
+.card h3{
+
+font-family:Playfair Display;
+font-size:28px;
+margin-bottom:20px;
+color:#C35C8A;
+
 }
 
-.highlight{
-    color:#6f4c93;
-    font-weight:600;
-}
+.card ul{
 
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:10px;
-}
+padding-left:18px;
+line-height:2;
 
-.tag{
-    background:var(--blue);
-    padding:10px 16px;
-    border-radius:30px;
-    font-size:.9rem;
-    font-weight:600;
 }
 
 .timeline{
-    list-style:none;
+
+display:grid;
+gap:25px;
+
 }
 
-.timeline li{
-    margin-bottom:18px;
-    padding-left:18px;
-    border-left:4px solid var(--rose);
-}
+.item{
 
-.contact{
-    text-align:center;
-}
+background:rgba(255,255,255,.55);
+padding:28px;
+border-radius:24px;
+border-left:8px solid #FFAFCC;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
 
-.contact a{
-    color:#5a5a5a;
-    text-decoration:none;
-    font-weight:600;
 }
 
 footer{
-    text-align:center;
-    padding:35px;
-    color:#666;
-    background:linear-gradient(90deg,var(--pink),var(--blue));
-    margin-top:40px;
-}
 
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 24px;
-    background:linear-gradient(90deg,var(--rose),var(--sky));
-    color:white;
-    text-decoration:none;
-    border-radius:30px;
-    transition:.3s;
-    font-weight:600;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-.stat-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-top:18px;
-}
-
-.stat{
-    background:#faf7ff;
-    border-radius:15px;
-    padding:18px;
-    text-align:center;
-}
-
-.stat h3{
-    color:#7b5aa6;
-    font-size:1.8rem;
-}
-
-@media(max-width:700px){
-
-h1{
-font-size:2.2rem;
-}
-
-.subtitle{
-font-size:1rem;
-}
-
-.grid{
-margin-top:-30px;
-}
+padding:80px 20px;
+text-align:center;
 
 }
+
+.contact{
+
+display:inline-block;
+padding:20px 40px;
+border-radius:50px;
+background:linear-gradient(135deg,#FFC8DD,#BDE0FE);
+font-weight:600;
+font-size:18px;
+box-shadow:0 15px 35px rgba(255,175,204,.35);
+
+}
+
+.ribbon{
+
+position:absolute;
+width:300px;
+height:18px;
+background:linear-gradient(90deg,#FFC8DD,#BDE0FE,#FFC8DD);
+opacity:.25;
+border-radius:50px;
+transform:rotate(-18deg);
+}
+
+.r1{top:15%;left:-100px;}
+.r2{bottom:10%;right:-90px;transform:rotate(20deg);}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.photo{
+margin:auto;
+}
+
+.heroText h1{
+font-size:58px;
+}
+
+.heroText h2{
+font-size:26px;
+}
+
+.title{
+font-size:40px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<div class="ribbon r1"></div>
+<div class="ribbon r2"></div>
+
 <header>
 
-<div class="profile-circle">
-EZ
+<div class="hero">
+
+<div class="photo">
+<img src="photo.jpg" alt="" onerror="this.style.display='none'">
 </div>
+
+<div class="heroText">
 
 <h1>Elsa Zhu</h1>
 
-<p class="subtitle">
-High School Student • Head of Student Council
+<h2>Economics • Mathematics • Leadership • Creativity</h2>
+
+<p>
+
+Curiosity has always shaped the way I learn. Whether I am solving mathematical problems, exploring economic systems, writing novels, performing on stage, or leading community initiatives, I am driven by the same belief: meaningful ideas become valuable only when they create opportunities for others. Over the years, I have balanced analytical thinking with artistic creativity, combining academic excellence in mathematics and economics with long-term dedication to music, dance, literature, leadership, and sport.
+
+Beyond the classroom, I enjoy building communities. From organizing charity fundraisers and cultural festivals to tutoring IELTS learners, directing an original theatre production, and managing educational social media content, I am constantly looking for ways to share knowledge and inspire others. My goal is to develop the analytical skills of an economist while maintaining the creativity, empathy, and resilience that have shaped every stage of my journey.
+
 </p>
 
-<a href="#contact" class="btn">Get in Touch</a>
+</div>
+
+</div>
 
 </header>
 
-<div class="container">
+<section class="section">
+
+<h2 class="title">Academic Highlights</h2>
 
 <div class="grid">
 
-<div class="card about">
-
-<h2>About Me</h2>
-
-<p>
-I am a high school student with a passion for <span class="highlight">mathematics, economics, leadership, and creative expression.</span> I enjoy exploring ideas from both analytical and artistic perspectives, believing that curiosity grows strongest when logic meets creativity.
-</p>
-
-<br>
-
-<p>
-Outside the classroom, I dedicate my time to music, dance, sports, storytelling, and community service. I have studied piano and ukulele for over a decade, trained in ballet and Latin dance for twelve years, competed in skateboarding for eleven years, and actively pursue rock climbing and sprinting. I have also spent seven years learning Spanish and love reading literature from different cultures.
-</p>
-
-<br>
-
-<p>
-Creativity has always been a major part of my life. I independently wrote and directed a full Harry Potter-themed school play, published a fiction novel, completed a twenty-chapter nonfiction manuscript exploring the historical roots of gender inequality, and continue sharing study advice through my social media page while tutoring IELTS learners online as a hobby.
-</p>
-
-<br>
-
-<p>
-Looking ahead, I hope to combine my interests in economics, mathematics, leadership, and public service to develop innovative solutions that create meaningful and lasting social impact.
-</p>
-
-</div>
-
 <div class="card">
 
-<h2>Academic Interests & Skills</h2>
+<h3>Achievements</h3>
 
-<div class="tags">
+<ul>
 
-<div class="tag">Economics</div>
+<li>Perfect Score — A-Level Mathematics</li>
 
-<div class="tag">Mathematics</div>
+<li>Full Marks — A-Level Economics</li>
 
-<div class="tag">Leadership</div>
-
-<div class="tag">Public Speaking</div>
-
-<div class="tag">Model United Nations</div>
-
-<div class="tag">Creative Writing</div>
-
-<div class="tag">Spanish</div>
-
-<div class="tag">Finance</div>
-
-</div>
-
-<div class="stat-grid">
-
-<div class="stat">
-<h3>8</h3>
-<p>Years in MUN</p>
-</div>
-
-<div class="stat">
-<h3>100%</h3>
-<p>A-Level Economics</p>
-</div>
-
-<div class="stat">
-<h3>Top 5%</h3>
-<p>Euclid Contest</p>
-</div>
-
-<div class="stat">
-<h3>10+</h3>
-<p>Years of Music</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Achievements</h2>
-
-<ul class="timeline">
-
-<li>Perfect score in A-Level Mathematics</li>
-
-<li>Full marks in A-Level Economics</li>
-
-<li>EDEXCEL Certificate Holder</li>
+<li>EDEXCEL Certificate</li>
 
 <li>CFA Investment Foundations Certificate</li>
 
@@ -347,11 +444,7 @@ Looking ahead, I hope to combine my interests in economics, mathematics, leaders
 
 <li>John Locke Economics Competition Commendation</li>
 
-<li>Shortlisted — John Locke International Relations Essay</li>
-
-<li>Published a fiction novel</li>
-
-<li>Completed a 20-chapter nonfiction manuscript</li>
+<li>International Relations Essay Shortlist</li>
 
 </ul>
 
@@ -359,77 +452,219 @@ Looking ahead, I hope to combine my interests in economics, mathematics, leaders
 
 <div class="card">
 
-<h2>Leadership & Activities</h2>
+<h3>Academic Interests</h3>
 
-<ul class="timeline">
+<ul>
 
-<li>Served on Student Council for eight years, organizing sports meets, cultural festivals, and charity fundraising events.</li>
+<li>Economics</li>
 
-<li>Helped raise funds supporting free cleft lip and palate surgeries for children in remote communities.</li>
+<li>Mathematics</li>
 
-<li>Volunteered weekly at a welfare home for disabled children throughout primary school.</li>
+<li>Finance</li>
 
-<li>Launched community environmental campaigns including neighborhood clean-ups and recycling workshops.</li>
+<li>Public Policy</li>
 
-<li>Coordinated a clothing donation drive delivering 338 pieces of clothing to an elementary school in Tibet.</li>
+<li>International Relations</li>
 
-<li>Hosted school holiday galas and public events.</li>
+<li>Behavioral Economics</li>
 
-<li>Women's 100-meter sprint champion at school for eight consecutive years.</li>
+<li>Research & Writing</li>
 
 </ul>
 
 </div>
 
-<div class="card contact" id="contact">
+<div class="card">
 
-<h2>Contact</h2>
+<h3>Creative Work</h3>
 
-<p>
-I'd love to connect with educators, students, mentors, and anyone who shares a passion for learning, leadership, and creating positive impact.
-</p>
+<ul>
 
-<br>
+<li>Published Fiction Novel</li>
 
-<p>
+<li>20-Chapter Nonfiction Book</li>
 
-📧<br><br>
+<li>Harry Potter Stage Play Writer & Director</li>
 
-<a href="mailto:Elsazhu20091105@gmail.com">
-Elsazhu20091105@gmail.com
-</a>
+<li>Educational Content Creator</li>
 
-</p>
+<li>Study Tips Social Media Page</li>
+
+</ul>
 
 </div>
 
 </div>
 
+</section>
+
+<section class="section">
+
+<h2 class="title">Passions & Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Arts</h3>
+
+<ul>
+
+<li>10 Years Piano</li>
+
+<li>10 Years Ukulele</li>
+
+<li>12 Years Ballet</li>
+
+<li>12 Years Latin Dance</li>
+
+<li>Storytelling & Literature</li>
+
+</ul>
+
 </div>
+
+<div class="card">
+
+<h3>Sports</h3>
+
+<ul>
+
+<li>11 Years Skateboarding</li>
+
+<li>Rock Climbing</li>
+
+<li>Sprint Running</li>
+
+<li>8 Consecutive Women's 100m Champion</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Languages & Communication</h3>
+
+<ul>
+
+<li>7 Years Spanish</li>
+
+<li>Model United Nations (8 Years)</li>
+
+<li>Committee Chair</li>
+
+<li>Public Speaking</li>
+
+<li>IELTS Tutor</li>
+
+<li>Event Host</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="title">Leadership & Service</h2>
+
+<div class="timeline">
+
+<div class="item">
+<strong>Student Council — 8 Years</strong><br><br>
+Led sports meets, cultural festivals, charity fairs and large-scale student events while coordinating fundraising campaigns supporting free cleft lip and palate surgeries for children in remote communities.
+</div>
+
+<div class="item">
+<strong>Community Impact</strong><br><br>
+Volunteered weekly with disabled children throughout primary school, organized neighborhood environmental campaigns, led waste-sorting workshops, and helped deliver 338 donated clothing items to an elementary school in Tibet.
+</div>
+
+<div class="item">
+<strong>Beyond Academics</strong><br><br>
+Managed educational social media content, tutored IELTS learners online, hosted school holiday galas, and continuously explored opportunities to combine creativity with meaningful service.
+</div>
+
+</div>
+
+</section>
 
 <footer>
 
-© 2026 Elsa Zhu • Designed with curiosity, creativity, and purpose.
+<h2 class="title">Let's Connect</h2>
+
+<div class="contact">
+
+📧 Elsazhu20091105@gmail.com
+
+</div>
+
+<br><br>
+
+<div style="font-family:'Great Vibes';font-size:38px;color:#ff91b8;">
+
+"Dream boldly. Learn endlessly. Lead with kindness."
+
+</div>
 
 </footer>
 
 <script>
-// Fade in cards
-const observer=new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.opacity=1;
-entry.target.style.transform="translateY(0)";
-}
-});
-});
 
-document.querySelectorAll(".card").forEach(card=>{
-card.style.opacity=0;
-card.style.transform="translateY(30px)";
-card.style.transition="all .7s ease";
-observer.observe(card);
-});
+/* Floating circles */
+
+for(let i=0;i<30;i++){
+
+let c=document.createElement("div");
+c.className="circle";
+
+let s=Math.random()*70+20;
+
+c.style.width=s+"px";
+c.style.height=s+"px";
+c.style.left=Math.random()*100+"vw";
+c.style.animationDuration=(15+Math.random()*20)+"s";
+c.style.animationDelay=Math.random()*15+"s";
+
+document.body.appendChild(c);
+
+}
+
+/* stars */
+
+for(let i=0;i<40;i++){
+
+let s=document.createElement("div");
+s.className="star";
+s.innerHTML="✦";
+
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+s.style.animationDelay=Math.random()*4+"s";
+
+document.body.appendChild(s);
+
+}
+
+/* butterflies */
+
+for(let i=0;i<6;i++){
+
+let b=document.createElement("div");
+b.className="butterfly";
+b.innerHTML=Math.random()>.5?"🦋":"❀";
+
+b.style.animationDuration=(18+Math.random()*10)+"s";
+b.style.animationDelay=Math.random()*8+"s";
+
+document.body.appendChild(b);
+
+}
+
 </script>
 
 </body>
